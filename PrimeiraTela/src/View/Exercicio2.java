@@ -70,9 +70,7 @@ public class Exercicio2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String nome = (textNome.getText() + " ");
 				String sobrenome = (textSobrenome.getText());
-				JLabel lblNomeComp = new JLabel((nome) + String.valueOf(sobrenome));
-				lblNomeComp.setBounds(61, 169, 265, 14);
-				contentPane.add(lblNomeComp);
+				JOptionPane.showMessageDialog(null, nome + " " + sobrenome);
 			}
 		});
 		btnNomeComp.setBounds(125, 111, 99, 23);
