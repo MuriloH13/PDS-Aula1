@@ -39,8 +39,9 @@ public class Exercicio2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Exercicio2() {
+		setTitle("Programa para mostrar o nome completo da pessoa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 480, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -73,7 +74,7 @@ public class Exercicio2 extends JFrame {
 				JOptionPane.showMessageDialog(null, nome + " " + sobrenome);
 			}
 		});
-		btnNomeComp.setBounds(125, 111, 99, 23);
+		btnNomeComp.setBounds(125, 111, 120, 23);
 		contentPane.add(btnNomeComp);
 		
 	}

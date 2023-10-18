@@ -42,8 +42,9 @@ public class Exercicio3 extends JFrame {
 	 * Create the frame.
 	 */
 	public Exercicio3() {
+		setTitle("Programa para cálculo de base e perímetro de um quadrado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 523, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -59,12 +60,12 @@ public class Exercicio3 extends JFrame {
 		contentPane.add(lblAltura);
 		
 		txtBase = new JTextField();
-		txtBase.setBounds(56, 20, 86, 20);
+		txtBase.setBounds(66, 20, 86, 20);
 		contentPane.add(txtBase);
 		txtBase.setColumns(10);
 		
 		txtAltura = new JTextField();
-		txtAltura.setBounds(56, 48, 86, 20);
+		txtAltura.setBounds(66, 45, 86, 20);
 		contentPane.add(txtAltura);
 		txtAltura.setColumns(10);
 		

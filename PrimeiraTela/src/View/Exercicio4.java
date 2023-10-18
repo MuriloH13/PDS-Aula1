@@ -42,8 +42,9 @@ public class Exercicio4 extends JFrame {
 	 * Create the frame.
 	 */
 	public Exercicio4() {
+		setTitle("Programa para cálculo de abastecimento de gasolina");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 495, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -51,20 +52,20 @@ public class Exercicio4 extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblGasolina = new JLabel("Preço da Gasolina:");
-		lblGasolina.setBounds(10, 11, 89, 14);
+		lblGasolina.setBounds(10, 11, 115, 14);
 		contentPane.add(lblGasolina);
 		
 		JLabel lblPagamento = new JLabel("Valor do pagamento:");
-		lblPagamento.setBounds(10, 53, 100, 14);
+		lblPagamento.setBounds(10, 53, 129, 14);
 		contentPane.add(lblPagamento);
 		
 		txtGasolina = new JTextField();
-		txtGasolina.setBounds(120, 8, 86, 20);
+		txtGasolina.setBounds(149, 8, 86, 20);
 		contentPane.add(txtGasolina);
 		txtGasolina.setColumns(10);
 		
 		txtPagamento = new JTextField();
-		txtPagamento.setBounds(120, 50, 86, 20);
+		txtPagamento.setBounds(149, 50, 86, 20);
 		contentPane.add(txtPagamento);
 		txtPagamento.setColumns(10);
 		
@@ -81,7 +82,7 @@ public class Exercicio4 extends JFrame {
 				
 			}
 		});
-		btnCalcular.setBounds(120, 102, 89, 23);
+		btnCalcular.setBounds(146, 101, 89, 23);
 		contentPane.add(btnCalcular);
 	}
 
