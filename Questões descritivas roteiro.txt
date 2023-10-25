@@ -1,0 +1,13 @@
+Roteiro Murilo H S Branco
+
+1. Os componentes permaneceram no mesmo lugar e tamanho apesar da janela ter sido redimensionada
+
+2. Todos os componentes da janela são redimensionados juntamente com a janela do programa
+
+3. Com essa modificação mesmo redimensionando a janela, os campos não alteram seu tamanho
+
+4. Feito
+
+5. Adicionado a janela
+
+6. Feito
