@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ButtonGroup;
 
 public class Retangulo extends JFrame {
 
@@ -21,6 +22,7 @@ public class Retangulo extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtBase;
 	private JTextField txtAltura;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -70,10 +72,12 @@ public class Retangulo extends JFrame {
 		contentPane.add(txtAltura);
 		
 		JRadioButton rdbtnArea = new JRadioButton("Área");
+		buttonGroup.add(rdbtnArea);
 		rdbtnArea.setBounds(36, 116, 91, 23);
 		contentPane.add(rdbtnArea);
 		
 		JRadioButton rdbtnPerimetro = new JRadioButton("Perímetro");
+		buttonGroup.add(rdbtnPerimetro);
 		rdbtnPerimetro.setBounds(160, 116, 109, 23);
 		contentPane.add(rdbtnPerimetro);
 		
@@ -107,6 +111,7 @@ public class Retangulo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				txtBase.setText(null);
 				txtAltura.setText(null);
+				lblResultado.setText(null);
 			}
 		});
 		btnLimpar.setBounds(108, 177, 89, 23);
