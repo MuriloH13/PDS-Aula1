@@ -145,7 +145,33 @@ public class Janela extends JFrame {
 		
 		btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
+				int linhaexc = table.getSelectedRow();
+				int cpf = (int) table.getValueAt(linhaexc, 1);
+				
+				String nome = txtNome.getText();
+				Integer cpf1 = Integer.parseInt(txtCPF.getText());
+				Integer telefone = Integer.parseInt(txtTelefone.getText());
+				Integer idade = Integer.parseInt(txtIdade.getText());
+				Float peso = Float.parseFloat(txtPeso.getText());
+				Float altura = Float.parseFloat(txtAltura.getText());
+				
+				for(Pessoa pessoa : listaPessoas) {
+					if(pessoa.getCpf() == cpf) {
+						pessoa.setNome(nome);
+						pessoa.setAltura(altura);
+						pessoa.setCpf(cpf1);
+						pessoa.setPeso(peso);
+						pessoa.setIdade(idade);
+						pessoa.setTelefone(telefone);
+						
+						atualizarJTableModel();
+						limparCampos();
+						
+					}
+				}
+				atualizarJTableModel();
 			}
 		});
 		btnAlterar.setBounds(210, 67, 89, 23);
@@ -179,7 +205,7 @@ public class Janela extends JFrame {
 		txtPeso.setColumns(10);
 		
 		lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(506, 11, 46, 14);
+		lblTelefone.setBounds(506, 11, 86, 14);
 		contentPane.add(lblTelefone);
 		
 		txtTelefone = new JTextField();
