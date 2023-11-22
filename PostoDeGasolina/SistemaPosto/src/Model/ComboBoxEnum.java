@@ -2,7 +2,7 @@ package Model;
 
 public enum ComboBoxEnum
 {
-	Óleo,
+	ÓleoDiesel,
 	GasComum,
 	GasAditivada,
 	Etanol;

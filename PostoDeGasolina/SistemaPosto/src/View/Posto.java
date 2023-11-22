@@ -2,31 +2,28 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
-import javax.swing.JComboBox;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
-import Model.Calculos;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.DefaultComboBoxModel;
-import Model.ComboBoxEnum;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
+import Model.Calculos;
+import Model.ComboBoxEnum;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.ButtonGroup;
 
 public class Posto extends JFrame {
 
@@ -42,7 +39,7 @@ public class Posto extends JFrame {
 	private JTextField txtQuantidadeLitros;
 	private JTextField txtFrasco500Oleo;
 	private JTextField txtFrasco1Oleo;
-	private JTextField txtQuantL;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -64,8 +61,8 @@ public class Posto extends JFrame {
 	 * Create the frame.
 	 */
 	public Posto() {
-		setTitle("Posto de Combustível");
 		Calculos chama = new Calculos ();
+		setTitle("Posto de Combustível");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 585, 500);
 		contentPane = new JPanel();
@@ -245,39 +242,10 @@ public class Posto extends JFrame {
 		JLabel lblQuantidadeLitros = new JLabel("Quantidade Litros:");
 		panel_3.add(lblQuantidadeLitros, "cell 1 1");
 		
-		panel_3.add(txtQuantidadeLitros, "cell 3 1,growx");
-		txtQuantidadeLitros.setColumns(10);
+	
 		
 		JLabel lblTotalResCombustivel = new JLabel("-");
 		panel_3.add(lblTotalResCombustivel, "cell 3 2");
-		
-		txtQuantL = new JTextField();
-		txtQuantL.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) 
-			{
-				int posicao=comboBox.getSelectedIndex();
-				float qLitros=Float.valueOf(txtQuantL.getText());
-				if(posicao==0)
-				{
-					lblTotalResCombustivel.setText("R$ " + chama.ToDiesel(qLitros));
-				}
-				if(posicao==1)
-				{
-					lblTotalResCombustivel.setText("R$ " + chama.ToCombustivel(qLitros));
-				}
-				if(posicao==2)
-				{
-					lblTotalResCombustivel.setText("R$ " + chama.ToAditiv(qLitros));
-				}
-				if(posicao==3)
-				{
-					lblTotalResCombustivel.setText("R$ " + chama.ToEtanol(qLitros));
-				}
-			}
-		});
-		panel_3.add(txtQuantL, "cell 3 1,growx");
-		txtQuantL.setColumns(10);
 		
 		JLabel lblTotalCombustivel = new JLabel("Total Combustivel");
 		panel_3.add(lblTotalCombustivel, "cell 1 2");
@@ -289,9 +257,11 @@ public class Posto extends JFrame {
 		panel_4.setLayout(new MigLayout("", "[][][][grow]", "[][][][]"));
 		
 		JRadioButton rdbtnVista = new JRadioButton("À vista");
+		buttonGroup.add(rdbtnVista);
 		panel_4.add(rdbtnVista, "cell 0 0");
 		
 		JRadioButton rdbtnPrazo = new JRadioButton("À prazo");
+		buttonGroup.add(rdbtnPrazo);
 		panel_4.add(rdbtnPrazo, "cell 0 1");
 		
 		JLabel lblDias = new JLabel("Dias:");
@@ -305,6 +275,9 @@ public class Posto extends JFrame {
 		lblTotalAPagar.setHorizontalAlignment(SwingConstants.RIGHT);
 		panel_4.add(lblTotalAPagar, "cell 0 3");
 		
+		JLabel lblApagar = new JLabel("-");
+		panel_4.add(lblApagar, "cell 3 3");
+		
 		txtQuantidadeLitros = new JTextField();
 		txtQuantidadeLitros.addFocusListener(new FocusAdapter() {
 			@Override
@@ -314,10 +287,12 @@ public class Posto extends JFrame {
 				Float qlitros=Float.valueOf(txtQuantidadeLitros.getText());
 				if (posicao==0)
 				{
-					lblTotalResCombustivel.setText("R$: " );
+					lblTotalResCombustivel.setText("R$: " +chama.ToCombustivel(qlitros));
 				}
 			}
 		});
+		panel_3.add(txtQuantidadeLitros, "cell 3 1,growx");
+		txtQuantidadeLitros.setColumns(10);
 		
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
@@ -326,6 +301,7 @@ public class Posto extends JFrame {
 				if(rdbtnVista.isSelected())
 				{
 					String Total=chama.ToAvista();
+					lblApagar.setText("R$ " + Total);
 				}
 				else if(rdbtnPrazo.isSelected())
 				{
@@ -333,12 +309,12 @@ public class Posto extends JFrame {
 					if(dias<30)
 					{
 						String Total = chama.ToAprazo();
-						lblTotalAPagar.setText("R$ " + Total);
+						lblApagar.setText("R$ " + Total);
 					}
 					else if(dias>30)
 					{
 						String Total = chama.ToAprazo30();
-						lblTotalAPagar.setText("R$ " + Total);
+						lblApagar.setText("R$ " + Total);
 					}
 				}
 			}
@@ -363,6 +339,7 @@ public class Posto extends JFrame {
 				llblFrascoP500.setText("");
 				lblFPagar.setText("");
 				lblTotalResCombustivel.setText("");
+				lblApagar.setText("");
 				
 			}
 		});
