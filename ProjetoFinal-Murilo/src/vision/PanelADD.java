@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.Color;
+import net.miginfocom.swing.MigLayout;
 
 public class PanelADD extends JFrame {
 
@@ -44,6 +46,7 @@ public class PanelADD extends JFrame {
 	private JLabel lblnitem;
 	private JTextField txtnitem;
 	private JButton btnFechar;
+	private JButton btnLimpar;
 
 	/**
 	 * Create the frame.
@@ -54,34 +57,29 @@ public class PanelADD extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new MigLayout("", "[125px][132px][32px][125px][147px][14px][27px][26px][132px][155px]", "[14px][22px][14px][22px][14px][20px][23px]"));
 		
 		JLabel lblnhospede = new JLabel("Nome do hóspede");
-		lblnhospede.setBounds(33, 11, 110, 14);
-		contentPane.add(lblnhospede);
+		contentPane.add(lblnhospede, "cell 0 0,growx,aligny top");
 		
 		JLabel lblnquarto = new JLabel("Número do quarto");
-		lblnquarto.setBounds(200, 11, 103, 14);
-		contentPane.add(lblnquarto);
+		contentPane.add(lblnquarto, "cell 1 0,alignx center,aligny top");
 		
 		JLabel lbldconsumo = new JLabel("Data do consumo");
-		lbldconsumo.setBounds(364, 11, 115, 14);
-		contentPane.add(lbldconsumo);
+		contentPane.add(lbldconsumo, "cell 3 0,growx,aligny top");
 		
 		JLabel lbldconsumido = new JLabel("Descrição do item consumido");
-		lbldconsumido.setBounds(524, 11, 188, 14);
-		contentPane.add(lbldconsumido);
+		contentPane.add(lbldconsumido, "cell 4 0 3 1,growx,aligny top");
 		
 		JLabel lblqconsumido = new JLabel("Quantidade consumida");
-		lblqconsumido.setBounds(738, 11, 132, 14);
-		contentPane.add(lblqconsumido);
+		contentPane.add(lblqconsumido, "cell 8 0,growx,aligny top");
 		
 		JLabel lblcitem = new JLabel("Custo unitário do item");
-		lblcitem.setBounds(919, 11, 145, 14);
-		contentPane.add(lblcitem);
+		contentPane.add(lblcitem, "cell 9 0,growx,aligny top");
 		
 		txtnhospede = new JTextField();
 		txtnhospede.addFocusListener(new FocusAdapter() {
@@ -96,8 +94,7 @@ public class PanelADD extends JFrame {
 			}
 				
 		});
-		txtnhospede.setBounds(20, 34, 125, 20);
-		contentPane.add(txtnhospede);
+		contentPane.add(txtnhospede, "cell 0 1,growx,aligny top");
 		txtnhospede.setColumns(10);
 		
 		txtnquarto = new JTextField();
@@ -108,31 +105,29 @@ public class PanelADD extends JFrame {
 				try {
 				    q = Integer.parseInt(txtnquarto.getText());
 				} catch (NumberFormatException ex) {
-				    JOptionPane.showMessageDialog(null, "Digite apenas números para a quantidade");
+				    JOptionPane.showMessageDialog(null, "Digite apenas números para o número do quarto");
 				    return;
 				}
 				
 			}
 		});
-		txtnquarto.setBounds(190, 34, 125, 20);
-		contentPane.add(txtnquarto);
+		contentPane.add(txtnquarto, "cell 1 1,growx,aligny top");
 		txtnquarto.setColumns(10);
 		
 		txtdconsumo = new JTextField();
 		txtdconsumo.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				float precof = 0;
+				float p = 0;
 				try {
-				    precof = Float.parseFloat(txtdconsumo.getText());
+				    p = Float.parseFloat(txtdconsumo.getText());
 				} catch (NumberFormatException ex) {
 				    JOptionPane.showMessageDialog(null, "Digite apenas números para a data");
 				    return;
 				}
 			}
 		});
-		txtdconsumo.setBounds(354, 34, 125, 20);
-		contentPane.add(txtdconsumo);
+		contentPane.add(txtdconsumo, "cell 3 1,growx,aligny top");
 		txtdconsumo.setColumns(10);
 		
 		txtdconsumido = new JTextField();
@@ -148,8 +143,7 @@ public class PanelADD extends JFrame {
 			}
 			}
 		});
-		txtdconsumido.setBounds(546, 36, 125, 20);
-		contentPane.add(txtdconsumido);
+		contentPane.add(txtdconsumido, "cell 4 1,growx,aligny bottom");
 		txtdconsumido.setColumns(10);
 		
 		txtqconsumido = new JTextField();
@@ -165,38 +159,35 @@ public class PanelADD extends JFrame {
 				}
 			}
 		});
-		txtqconsumido.setBounds(738, 36, 125, 20);
-		contentPane.add(txtqconsumido);
+		contentPane.add(txtqconsumido, "cell 8 1,growx,aligny bottom");
 		txtqconsumido.setColumns(10);
 		
 		txtcitem = new JTextField();
 		txtcitem.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				float precof = 0;
+				float p = 0;
 				try {
-				    precof = Float.parseFloat(txtcitem.getText());
+				    p = Float.parseFloat(txtcitem.getText());
 				} catch (NumberFormatException ex) {
 				    JOptionPane.showMessageDialog(null, "Digite apenas números para o preço");
 				    return;
 				}
 			}
 		});
-		txtcitem.setBounds(919, 36, 125, 20);
-		contentPane.add(txtcitem);
+		contentPane.add(txtcitem, "cell 9 1,growx,aligny bottom");
 		txtcitem.setColumns(10);
 		
 		JLabel lblctitem = new JLabel("Custo total do item");
-		lblctitem.setBounds(33, 80, 110, 14);
-		contentPane.add(lblctitem);
+		contentPane.add(lblctitem, "cell 0 2,growx,aligny top");
 		
 		txtctitem = new JTextField();
 		txtctitem.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				float precof = 0;
+				float p = 0;
 				try {
-				    precof = Float.parseFloat(txtctitem.getText());
+				    p = Float.parseFloat(txtctitem.getText());
 				} catch (NumberFormatException ex) {
 				    JOptionPane.showMessageDialog(null, "Digite apenas números para o preço");
 				    return;
@@ -204,20 +195,18 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txtctitem.setColumns(10);
-		txtctitem.setBounds(20, 102, 125, 20);
-		contentPane.add(txtctitem);
+		contentPane.add(txtctitem, "cell 0 3,growx,aligny center");
 		
 		lbltpago = new JLabel("Total pago até o momento");
-		lbltpago.setBounds(534, 80, 158, 14);
-		contentPane.add(lbltpago);
+		contentPane.add(lbltpago, "cell 4 2 3 1,growx,aligny top");
 		
 		txttpago = new JTextField();
 		txttpago.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				float precof = 0;
+				float p = 0;
 				try {
-				    precof = Float.parseFloat(txttpago.getText());
+				    p = Float.parseFloat(txttpago.getText());
 				} catch (NumberFormatException ex) {
 				    JOptionPane.showMessageDialog(null, "Digite apenas números para o preço");
 				    return;
@@ -225,29 +214,25 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txttpago.setColumns(10);
-		txttpago.setBounds(546, 102, 125, 20);
-		contentPane.add(txttpago);
+		contentPane.add(txttpago, "cell 4 3,growx,aligny center");
 		
 		lblmetpaga = new JLabel("Método de pagamento");
-		lblmetpaga.setBounds(190, 80, 132, 14);
-		contentPane.add(lblmetpaga);
+		contentPane.add(lblmetpaga, "cell 1 2,growx,aligny top");
 		
 		JComboBox cbmetpag = new JComboBox();
-		cbmetpag.setBounds(190, 101, 125, 22);
 		cbmetpag.setModel(new DefaultComboBoxModel(MetodoPagamento.values()));
-		contentPane.add(cbmetpag);
+		contentPane.add(cbmetpag, "cell 1 3,grow");
 		
 		lblhora = new JLabel("Hora do consumo");
-		lblhora.setBounds(364, 80, 110, 14);
-		contentPane.add(lblhora);
+		contentPane.add(lblhora, "cell 3 2,growx,aligny top");
 		
 		txthora = new JTextField();
 		txthora.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				float precof = 0;
+				float p = 0;
 				try {
-				    precof = Float.parseFloat(txthora.getText());
+				    p = Float.parseFloat(txthora.getText());
 				} catch (NumberFormatException ex) {
 				    JOptionPane.showMessageDialog(null, "Digite apenas números para a hora");
 				    return;
@@ -255,20 +240,18 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txthora.setColumns(10);
-		txthora.setBounds(354, 102, 125, 20);
-		contentPane.add(txthora);
+		contentPane.add(txthora, "cell 3 3,growx,aligny center");
 		
 		lblav = new JLabel("Avaliação do serviço");
-		lblav.setBounds(738, 80, 125, 14);
-		contentPane.add(lblav);
+		contentPane.add(lblav, "cell 8 2,growx,aligny top");
 		
 		txtav = new JTextField();
 		txtav.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				float precof = 0;
+				float p = 0;
 				try {
-				    precof = Float.parseFloat(txtav.getText());
+				    p = Float.parseFloat(txtav.getText());
 				} catch (NumberFormatException ex) {
 				    JOptionPane.showMessageDialog(null, "Digite apenas números para a avaliação");
 				    return;
@@ -276,16 +259,13 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txtav.setColumns(10);
-		txtav.setBounds(738, 102, 125, 20);
-		contentPane.add(txtav);
+		contentPane.add(txtav, "cell 8 3,growx,aligny center");
 		
 		lblfunc = new JLabel("Funcionário que registrou o consumo");
-		lblfunc.setBounds(220, 177, 229, 14);
-		contentPane.add(lblfunc);
+		contentPane.add(lblfunc, "cell 1 4 3 1,alignx center,aligny top");
 		
 		lblchosp = new JLabel("Comentários do hóspede");
-		lblchosp.setBounds(909, 80, 145, 14);
-		contentPane.add(lblchosp);
+		contentPane.add(lblchosp, "cell 9 2,growx,aligny top");
 		
 		txtchosp = new JTextField();
 		txtchosp.addFocusListener(new FocusAdapter() {
@@ -298,8 +278,7 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txtchosp.setColumns(10);
-		txtchosp.setBounds(919, 102, 125, 20);
-		contentPane.add(txtchosp);
+		contentPane.add(txtchosp, "cell 9 3,growx,aligny center");
 		
 		txtfunc = new JTextField();
 		txtfunc.addFocusListener(new FocusAdapter() {
@@ -314,12 +293,10 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txtfunc.setColumns(10);
-		txtfunc.setBounds(264, 202, 125, 20);
-		contentPane.add(txtfunc);
+		contentPane.add(txtfunc, "cell 1 5 3 1,alignx center,aligny top");
 		
 		lblnitem = new JLabel("Número de itens restantes");
-		lblnitem.setBounds(670, 177, 168, 14);
-		contentPane.add(lblnitem);
+		contentPane.add(lblnitem, "cell 4 4 5 1,alignx center,aligny top");
 		
 		txtnitem = new JTextField();
 		txtnitem.addFocusListener(new FocusAdapter() {
@@ -335,10 +312,10 @@ public class PanelADD extends JFrame {
 			}
 		});
 		txtnitem.setColumns(10);
-		txtnitem.setBounds(685, 202, 125, 20);
-		contentPane.add(txtnitem);
+		contentPane.add(txtnitem, "cell 6 5 3 1,alignx left,aligny top");
 		
 		JButton btncadastrar = new JButton("Cadastrar");
+		btncadastrar.setBackground(new Color(126, 248, 136));
 		btncadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -373,15 +350,30 @@ public class PanelADD extends JFrame {
 				h.setFunc(func);
 				h.setNumitens(Integer.valueOf(numitens));
 				
+				cbmetpag.removeAllItems();
+				for (MetodoPagamento metodo : MetodoPagamento.values()){
+					cbmetpag.addItem(metodo);
+				}
+				cbmetpag.updateUI();
+				
 				
 				cadastra.importvar(h);
 				LimparCampos();
 			}
 		});
-		btncadastrar.setBounds(602, 270, 158, 35);
-		contentPane.add(btncadastrar);
+		
+		btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LimparCampos();
+			}
+		});
+		btnLimpar.setBackground(new Color(145, 255, 255));
+		contentPane.add(btnLimpar, "cell 4 6,alignx left,growy");
+		contentPane.add(btncadastrar, "cell 6 6 3 1,alignx left,aligny top");
 		
 		btnFechar = new JButton("Fechar");
+		btnFechar.setBackground(new Color(255, 119, 122));
 		btnFechar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -389,8 +381,7 @@ public class PanelADD extends JFrame {
 			
 			}
 		});
-		btnFechar.setBounds(421, 270, 158, 35);
-		contentPane.add(btnFechar);
+		contentPane.add(btnFechar, "cell 1 6 3 1,alignx center,aligny top");
 		
 	}
 		
@@ -409,6 +400,7 @@ public class PanelADD extends JFrame {
 		txtav.setText("");
 		txtnitem.setText("");
 	}
+	
 	
 }
 

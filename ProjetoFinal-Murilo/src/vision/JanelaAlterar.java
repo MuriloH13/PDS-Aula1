@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.Color;
+import net.miginfocom.swing.MigLayout;
 
 public class JanelaAlterar extends JFrame {
 
@@ -57,34 +59,29 @@ public class JanelaAlterar extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1080, 720);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new MigLayout("", "[125px][132px][32px][95px][6px][24px][45px][76px][70px][1px][14px][27px][26px][132px][155px]", "[14px][22px][14px][22px][14px][20px][23px]"));
 		
 		JLabel lblnhospede = new JLabel("Nome do hóspede");
-		lblnhospede.setBounds(33, 11, 110, 14);
-		contentPane.add(lblnhospede);
+		contentPane.add(lblnhospede, "cell 0 0,growx,aligny top");
 		
 		JLabel lblnquarto = new JLabel("Número do quarto");
-		lblnquarto.setBounds(200, 11, 103, 14);
-		contentPane.add(lblnquarto);
+		contentPane.add(lblnquarto, "cell 1 0,alignx center,aligny top");
 		
 		JLabel lbldconsumo = new JLabel("Data do consumo");
-		lbldconsumo.setBounds(364, 11, 115, 14);
-		contentPane.add(lbldconsumo);
+		contentPane.add(lbldconsumo, "cell 3 0 3 1,growx,aligny top");
 		
 		JLabel lbldconsumido = new JLabel("Descrição do item consumido");
-		lbldconsumido.setBounds(524, 11, 188, 14);
-		contentPane.add(lbldconsumido);
+		contentPane.add(lbldconsumido, "cell 7 0 5 1,growx,aligny top");
 		
 		JLabel lblqconsumido = new JLabel("Quantidade consumida");
-		lblqconsumido.setBounds(738, 11, 132, 14);
-		contentPane.add(lblqconsumido);
+		contentPane.add(lblqconsumido, "cell 13 0,growx,aligny top");
 		
 		JLabel lblcitem = new JLabel("Custo unitário do item");
-		lblcitem.setBounds(919, 11, 145, 14);
-		contentPane.add(lblcitem);
+		contentPane.add(lblcitem, "cell 14 0,growx,aligny top");
 		
 		
 		
@@ -100,8 +97,7 @@ public class JanelaAlterar extends JFrame {
 			}
 			}
 		});
-		txtnhospede.setBounds(20, 34, 125, 20);
-		contentPane.add(txtnhospede);
+		contentPane.add(txtnhospede, "cell 0 1,growx,aligny top");
 		txtnhospede.setColumns(10);
 		
 		txtnquarto = new JTextField();
@@ -117,8 +113,7 @@ public class JanelaAlterar extends JFrame {
 				}
 			}
 		});
-		txtnquarto.setBounds(190, 34, 125, 20);
-		contentPane.add(txtnquarto);
+		contentPane.add(txtnquarto, "cell 1 1,growx,aligny top");
 		txtnquarto.setColumns(10);
 		
 		txtdconsumo = new JTextField();
@@ -134,8 +129,7 @@ public class JanelaAlterar extends JFrame {
 				}
 			}
 		});
-		txtdconsumo.setBounds(354, 34, 125, 20);
-		contentPane.add(txtdconsumo);
+		contentPane.add(txtdconsumo, "cell 3 1 3 1,growx,aligny top");
 		txtdconsumo.setColumns(10);
 		
 		txtdconsumido = new JTextField();
@@ -151,8 +145,7 @@ public class JanelaAlterar extends JFrame {
 			}
 			}
 		});
-		txtdconsumido.setBounds(546, 36, 125, 20);
-		contentPane.add(txtdconsumido);
+		contentPane.add(txtdconsumido, "cell 7 1 3 1,growx,aligny bottom");
 		txtdconsumido.setColumns(10);
 		
 		txtqconsumido = new JTextField();
@@ -168,8 +161,7 @@ public class JanelaAlterar extends JFrame {
 				}
 			}
 		});
-		txtqconsumido.setBounds(738, 36, 125, 20);
-		contentPane.add(txtqconsumido);
+		contentPane.add(txtqconsumido, "cell 13 1,growx,aligny bottom");
 		txtqconsumido.setColumns(10);
 		
 		txtcitem = new JTextField();
@@ -185,13 +177,11 @@ public class JanelaAlterar extends JFrame {
 				}
 			}
 		});
-		txtcitem.setBounds(919, 36, 125, 20);
-		contentPane.add(txtcitem);
+		contentPane.add(txtcitem, "cell 14 1,growx,aligny bottom");
 		txtcitem.setColumns(10);
 		
 		JLabel lblctitem = new JLabel("Custo total do item");
-		lblctitem.setBounds(33, 80, 110, 14);
-		contentPane.add(lblctitem);
+		contentPane.add(lblctitem, "cell 0 2,growx,aligny top");
 		
 		txtctitem = new JTextField();
 		txtctitem.addFocusListener(new FocusAdapter() {
@@ -207,12 +197,10 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txtctitem.setColumns(10);
-		txtctitem.setBounds(20, 102, 125, 20);
-		contentPane.add(txtctitem);
+		contentPane.add(txtctitem, "cell 0 3,growx,aligny center");
 		
 		lbltpago = new JLabel("Total pago até o momento");
-		lbltpago.setBounds(534, 80, 158, 14);
-		contentPane.add(lbltpago);
+		contentPane.add(lbltpago, "cell 7 2 5 1,growx,aligny top");
 		
 		txttpago = new JTextField();
 		txttpago.addFocusListener(new FocusAdapter() {
@@ -228,21 +216,17 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txttpago.setColumns(10);
-		txttpago.setBounds(546, 102, 125, 20);
-		contentPane.add(txttpago);
+		contentPane.add(txttpago, "cell 7 3 3 1,growx,aligny center");
 		
 		lblmetpaga = new JLabel("Método de pagamento");
-		lblmetpaga.setBounds(190, 80, 132, 14);
-		contentPane.add(lblmetpaga);
+		contentPane.add(lblmetpaga, "cell 1 2,growx,aligny top");
 		
 		JComboBox cbmetpag = new JComboBox();
-		cbmetpag.setBounds(190, 101, 125, 22);
 		cbmetpag.setModel(new DefaultComboBoxModel(MetodoPagamento.values()));
-		contentPane.add(cbmetpag);
+		contentPane.add(cbmetpag, "cell 1 3,grow");
 		
 		lblhora = new JLabel("Hora do consumo");
-		lblhora.setBounds(364, 80, 110, 14);
-		contentPane.add(lblhora);
+		contentPane.add(lblhora, "cell 3 2 3 1,growx,aligny top");
 		
 		txthora = new JTextField();
 		txthora.addFocusListener(new FocusAdapter() {
@@ -258,12 +242,10 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txthora.setColumns(10);
-		txthora.setBounds(354, 102, 125, 20);
-		contentPane.add(txthora);
+		contentPane.add(txthora, "cell 3 3 3 1,growx,aligny center");
 		
 		lblav = new JLabel("Avaliação do serviço");
-		lblav.setBounds(738, 80, 125, 14);
-		contentPane.add(lblav);
+		contentPane.add(lblav, "cell 13 2,growx,aligny top");
 		
 		txtav = new JTextField();
 		txtav.addFocusListener(new FocusAdapter() {
@@ -279,16 +261,13 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txtav.setColumns(10);
-		txtav.setBounds(738, 102, 125, 20);
-		contentPane.add(txtav);
+		contentPane.add(txtav, "cell 13 3,growx,aligny center");
 		
 		lblfunc = new JLabel("Funcionário que registrou o consumo");
-		lblfunc.setBounds(220, 177, 229, 14);
-		contentPane.add(lblfunc);
+		contentPane.add(lblfunc, "cell 1 4 3 1,growx,aligny top");
 		
 		lblchosp = new JLabel("Comentários do hóspede");
-		lblchosp.setBounds(909, 80, 145, 14);
-		contentPane.add(lblchosp);
+		contentPane.add(lblchosp, "cell 14 2,growx,aligny top");
 		
 		txtchosp = new JTextField();
 		txtchosp.addFocusListener(new FocusAdapter() {
@@ -301,8 +280,7 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txtchosp.setColumns(10);
-		txtchosp.setBounds(919, 102, 125, 20);
-		contentPane.add(txtchosp);
+		contentPane.add(txtchosp, "cell 14 3,growx,aligny center");
 		
 		txtfunc = new JTextField();
 		txtfunc.addFocusListener(new FocusAdapter() {
@@ -316,12 +294,10 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txtfunc.setColumns(10);
-		txtfunc.setBounds(264, 202, 125, 20);
-		contentPane.add(txtfunc);
+		contentPane.add(txtfunc, "cell 1 5 3 1,alignx center,aligny top");
 		
 		lblnitem = new JLabel("Número de itens restantes");
-		lblnitem.setBounds(670, 177, 168, 14);
-		contentPane.add(lblnitem);
+		contentPane.add(lblnitem, "cell 9 4 5 1,growx,aligny top");
 		
 		txtnitem = new JTextField();
 		txtnitem.addFocusListener(new FocusAdapter() {
@@ -337,12 +313,17 @@ public class JanelaAlterar extends JFrame {
 			}
 		});
 		txtnitem.setColumns(10);
-		txtnitem.setBounds(685, 202, 125, 20);
-		contentPane.add(txtnitem);
+		contentPane.add(txtnitem, "cell 11 5 3 1,alignx left,aligny top");
 		
 		btnNewButton = new JButton("Alterar valores");
+		btnNewButton.setBackground(new Color(155, 251, 157));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Object selecionado = cbmetpag.getSelectedItem();
+				String metodopagamento;
+				
+				metodopagamento = selecionado.toString();
 				
 				pessoaSelecionada.setNome(txtnhospede.getText());
 				pessoaSelecionada.setNumquarto(Integer.parseInt(txtnquarto.getText()));
@@ -351,7 +332,7 @@ public class JanelaAlterar extends JFrame {
 				pessoaSelecionada.setQuantc(Integer.parseInt(txtqconsumido.getText()));
 				pessoaSelecionada.setCuitem(Float.parseFloat(txtcitem.getText()));
 				pessoaSelecionada.setCutitem(Float.parseFloat(txtctitem.getText()));
-				cbmetpag.setSelectedItem(pessoaSelecionada.getMetpag());
+				pessoaSelecionada.setMetpag(metodopagamento);
 				pessoaSelecionada.setHorac(Float.parseFloat(txthora.getText()));
 				pessoaSelecionada.setTpago(Float.parseFloat(txttpago.getText()));
 				pessoaSelecionada.setAvserv(Float.parseFloat(txtav.getText()));;
@@ -364,21 +345,40 @@ public class JanelaAlterar extends JFrame {
 		
 			}
 		});
-		btnNewButton.setBounds(547, 255, 145, 23);
-		contentPane.add(btnNewButton);
+		contentPane.add(btnNewButton, "cell 9 6 5 1,alignx left,aligny top");
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(new Color(255, 119, 122));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(304, 255, 145, 23);
-		contentPane.add(btnCancelar);
+		contentPane.add(btnCancelar, "cell 1 6 3 1,alignx center,aligny top");
+		
+		JButton btnCancelar_1 = new JButton("Limpar");
+		btnCancelar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LimparCampos();
+			}
+		});
+		btnCancelar_1.setBackground(new Color(145, 255, 255));
+		contentPane.add(btnCancelar_1, "cell 5 6 3 1,growx,aligny top");
 		
 	}
-	
-	
-	
-	
+	public void LimparCampos() {
+		txtnhospede.setText("");
+		txtnquarto.setText("");
+		txtdconsumo.setText("");
+		txtdconsumido.setText("");
+		txtqconsumido.setText("");
+		txtcitem.setText("");
+		txtctitem.setText("");
+		txttpago.setText("");
+		txthora.setText("");
+		txtfunc.setText("");
+		txtchosp.setText("");
+		txtav.setText("");
+		txtnitem.setText("");
+	}
 }

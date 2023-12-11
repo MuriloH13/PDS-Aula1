@@ -15,6 +15,12 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
 import model.ConsHospedes;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import net.miginfocom.swing.MigLayout;
 
 
 public class JanelaTabela extends JFrame {
@@ -30,6 +36,7 @@ public class JanelaTabela extends JFrame {
 			public void run() {
 				try {
 					JanelaTabela frame = new JanelaTabela();
+					frame.setMinimumSize(new Dimension(400, 300));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,17 +47,16 @@ public class JanelaTabela extends JFrame {
 	
 	@SuppressWarnings("unused")
 	public JanelaTabela() {
-		setTitle("Tela de consumo e controle de hóspedes");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1080, 720);
+		setBounds(100, 100, 1120, 720);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-        contentPane.setLayout(null);
+		contentPane.setLayout(new MigLayout("", "[282px][122px][89px][121px][429px]", "[30px][146px][23px]"));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 1043, 146);
-		contentPane.add(scrollPane);
+		contentPane.add(scrollPane, "cell 0 1 5 1,grow");
 		
 		table = new JTable();
 		JanelaTabela janela = this;
@@ -68,6 +74,7 @@ public class JanelaTabela extends JFrame {
 		
 		
 		JButton btnNewButton_1 = new JButton("Excluir");
+		btnNewButton_1.setBackground(new Color(252, 116, 130));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -81,12 +88,10 @@ public class JanelaTabela extends JFrame {
 				AtualizarJTableModel();
 			}
 		});
-		
-		
-		btnNewButton_1.setBounds(182, 192, 89, 23);
-		contentPane.add(btnNewButton_1);
+		contentPane.add(btnNewButton_1, "cell 0 2,alignx right,aligny top");
 		
 		JButton btnNewButton_1_1 = new JButton("Alterar");
+		btnNewButton_1_1.setBackground(new Color(108, 244, 217));
 		
 		JanelaTabela alterar = this;
 		btnNewButton_1_1.addActionListener(new ActionListener() {
@@ -103,10 +108,10 @@ public class JanelaTabela extends JFrame {
 				novajanela.setVisible(true);
 			}
 		});
-		btnNewButton_1_1.setBounds(310, 192, 89, 23);
-		contentPane.add(btnNewButton_1_1);
+		contentPane.add(btnNewButton_1_1, "cell 2 2,growx,aligny top");
 		
 		JButton btnNewButton_1_1_1 = new JButton("Adicionar um registro");
+		btnNewButton_1_1_1.setBackground(new Color(155, 251, 157));
 		btnNewButton_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -114,8 +119,11 @@ public class JanelaTabela extends JFrame {
 				cadastro.setVisible(true);
 			}
 		});
-		btnNewButton_1_1_1.setBounds(415, 192, 176, 23);
-		contentPane.add(btnNewButton_1_1_1);
+		contentPane.add(btnNewButton_1_1_1, "cell 4 2,alignx left,aligny top");
+		
+		JLabel lblNewLabel = new JLabel("Consumo de Hospedes");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		contentPane.add(lblNewLabel, "cell 2 0 3 1,alignx left,aligny center");
 		
 	}
 	
@@ -125,7 +133,9 @@ public class JanelaTabela extends JFrame {
 	}
 	
 	public void atualizarDados(ConsHospedes c) {
+
 		int linha = table.getSelectedRow();
+		
 		listaPessoas.set(linha, c);
 		AtualizarJTableModel();
 	}
@@ -134,7 +144,6 @@ public class JanelaTabela extends JFrame {
 		listaPessoas.add(importa);
 		AtualizarJTableModel();
 	}
-	
 }
 
 
